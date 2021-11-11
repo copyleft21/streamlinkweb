@@ -1,0 +1,24 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+black = "*"
+flake8 = "*"
+isort = "*"
+
+[packages]
+flask = {extras = ["async"], version = "*"}
+bootstrap-flask = "*"
+flask-nav = "*"
+Flask-WTF = "*"
+email_validator = "*"
+requests = "*"
+requests-futures = "*"
+
+[requires]
+python_version = "3.9"
+
+[pipenv]
+allow_prereleases = true

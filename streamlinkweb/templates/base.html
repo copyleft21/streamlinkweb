@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+
+
+<style type="text/css">
+    body {
+        background-image: url('static/cool-background.jpg') !important;
+    }
+
+    /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
+
+
+<head>
+    {% block head %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% block styles %}
+    <!-- Bootstrap CSS -->
+    {{ bootstrap.load_css() }}
+    {% endblock %}
+
+    <title>HS's Stream Relay</title>
+    {% endblock %}
+</head>
+
+<body>
+    <!-- Your page content -->
+    {% block content %}{% endblock %}
+
+    {% block scripts %}
+    <!-- Optional JavaScript -->
+    {{ bootstrap.load_js() }}
+    {% endblock %}
+</body>
+
+</html>

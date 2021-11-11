@@ -1,0 +1,25 @@
+{%- extends "base.html" %}
+{% import "bootstrap/utils.html" as utils %}
+{% from 'bootstrap/form.html' import render_form, render_field %}
+{% block content %}
+<div class="container">
+    {%- with messages = get_flashed_messages(with_categories=True) %}
+    {%- if messages %}
+    <div class="row">
+        <div class="col-md-12">
+            {{utils.render_messages(messages)}}
+        </div>
+    </div>
+    {%- endif %}
+    {%- endwith %}
+    <div class="jumbotron">
+        <h1>HS's Stream Relay</h1>
+        <p>Alright, lets get this working please.</p>
+        {% if request.args.get('legacy') -%}
+        {{render_form(form, novalidate=True)}}
+        {%- else -%}
+        {{render_form(form)}}
+        {%- endif %}
+    </div>
+</div>
+{%- endblock %}
