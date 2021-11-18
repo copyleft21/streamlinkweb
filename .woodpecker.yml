@@ -3,3 +3,13 @@ pipeline:
     image: python:3.9-slim-buster
     commands:
       - python3 -m unittest discover test -v
+  ecr_build:
+    image: plugins/ecr
+    settings:
+      access_key:
+        from_secret: aws_access_key
+      secret_key:
+        from_secret: aws_secret_key
+      repo: streamlinkweb
+      registry:
+        from_secret: aws_ecr_registry_url
