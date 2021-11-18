@@ -5,11 +5,9 @@ from os import urandom
 from flask import Flask, Response, flash, redirect, render_template, request, url_for
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
-from markupsafe import escape
 from requests_futures.sessions import FuturesSession
 from wtforms.fields import *
-from wtforms.validators import InputRequired
-from wtforms.validators import Regexp
+from wtforms.validators import InputRequired, Regexp
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = urandom(32)
@@ -65,9 +63,9 @@ async def proxy(port):
         if name.lower() not in excluded_headers
     ]
     response = Response(
-        resp.iter_content(chunk_size=10 * 1024),
-        resp.status_code,
-        headers,
+        reponse=resp.iter_content(chunk_size=10 * 1024),
+        status=resp.status_code,
+        headers=headers,
     )
     return response
 
