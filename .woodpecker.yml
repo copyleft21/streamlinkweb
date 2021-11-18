@@ -9,7 +9,6 @@ pipeline:
       - ECR_ACCESS_KEY=${aws_access_key}
       - ECR_SECRET_KEY=${aws_secret_key}
     secrets: [aws_access_key, aws_secret_key]
-    settings:
-      repo: streamlinkweb
-      registry:
-        from_secret: aws_ecr_registry_url
+    repo: streamlinkweb
+    registry:
+      from_secret: aws_ecr_registry_url
