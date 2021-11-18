@@ -1,4 +1,3 @@
-import asyncio
 import re
 from os import urandom
 
@@ -68,7 +67,3 @@ async def proxy(port):
         headers=headers,
     )
     return response
-
-
-if __name__ == "__main__":
-    asyncio.run(app.run("localhost", 4449))
