@@ -1,0 +1,5 @@
+pipeline:
+  test:
+    image: python:3.9-slim-buster
+    commands:
+      - python3 -m unittest discover test -v
