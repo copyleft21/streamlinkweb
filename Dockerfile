@@ -26,5 +26,5 @@ WORKDIR /home/streamlinkweb
 USER streamlinkweb
 COPY streamlinkweb .
 
-EXPOSE 4449
+EXPOSE 4449/tcp
 ENTRYPOINT ["python3", "main.py"]
