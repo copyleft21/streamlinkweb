@@ -9,6 +9,8 @@ pipeline:
     settings:
       yaml: ./streamlinkweb-deployment.yaml
       kubeconfig: ${kubeconfig}
+    kubeconfig:
+      from_secret: kubeconfig
     secrets: [kubeconfig]
 
   ecr_build:
