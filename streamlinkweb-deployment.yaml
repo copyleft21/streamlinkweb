@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: streamlinkweb
+  labels:
+    app: streamlinkweb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: streamlinkweb
+  template:
+    metadata:
+      labels:
+        app: streamlinkweb
+    spec:
+      containers:
+        - name: streamlinkweb
+          image: 550694123460.dkr.ecr.us-east-1.amazonaws.com/streamlinkweb
+          ports:
+            - containerPort: 4449
+              name: "http-server"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: streamlinkweb
+spec:
+  type: LoadBalancer
+  selector:
+    app: streamlinkweb
+  ports:
+    - port: 4449
+      targetPort: 4449
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: streamlinkweb-wui
+spec:
+  rules:
+    - host: stream.hs.gy
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: streamlinkweb
+              servicePort: 4449

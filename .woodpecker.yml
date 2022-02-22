@@ -9,9 +9,8 @@ pipeline:
     environment:
       - ECR_ACCESS_KEY=${aws_access_key}
       - ECR_SECRET_KEY=${aws_secret_key}
-    settings:
-      repo: streamlinkweb
-      registry: ${aws_ecr_registry_url}
+    repo: streamlinkweb
+    registry: ${aws_ecr_registry_url}
     secrets: [aws_access_key, aws_secret_key, aws_ecr_registry_url]
 
   k8_deploy:
