@@ -3,6 +3,7 @@ pipeline:
     image: python:3.9-slim-buster
     commands:
       - python3 -m unittest discover test -v
+
   ecr_build:
     image: plugins/ecr
     environment:
@@ -11,6 +12,7 @@ pipeline:
     repo: streamlinkweb
     registry: ${aws_ecr_registry_url}
     secrets: [aws_access_key, aws_secret_key, aws_ecr_registry_url]
+
   k8_deploy:
     image: ghcr.io/bh90210/dron8s:latest
     settings:
