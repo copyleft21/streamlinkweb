@@ -15,7 +15,6 @@ pipeline:
 
   k8_deploy:
     image: ghcr.io/bh90210/dron8s:latest
-    settings:
-      yaml: ./streamlinkgweb-deployment.yaml
-      kubeconfig:
-        from_secret: kubeconfig
+    yaml: ./streamlinkgweb-deployment.yaml
+    kubeconfig:
+      from_secret: kubeconfig

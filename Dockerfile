@@ -1,8 +1,8 @@
 FROM python:3.9-alpine3.14 as base
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONFAULTHANDLER 1
+ENV LANG=C.UTF-8 \
+    LC_ALL=C.UTF-8 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONFAULTHANDLER=1
 RUN apk update && apk add --no-cache ffmpeg libxslt-dev libxml2-dev
 
 FROM base as builder
