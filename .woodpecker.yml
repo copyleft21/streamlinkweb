@@ -6,12 +6,13 @@ pipeline:
 
   k8_deploy:
     image: ghcr.io/bh90210/dron8s:latest
+    environment:
+      - KUBERNETES_SERVICE_HOST=${kubernetes_server}
     settings:
       kubeconfig:
         from_secret: kubeconfig
       yaml: ./streamlinkweb-deployment.yaml
-
-    secrets: [kubeconfig]
+    secrets: [kubeconfig, kubernetes_server]
 
   ecr_build:
     image: plugins/ecr
