@@ -8,8 +8,7 @@ pipeline:
     image: ghcr.io/bh90210/dron8s:latest
     settings:
       yaml: ./streamlinkweb-deployment.yaml
-      kubeconfig:
-        from_secret: kubeconfig
+      kubeconfig: ${kubeconfig}
     secrets: [kubeconfig]
 
   ecr_build:
