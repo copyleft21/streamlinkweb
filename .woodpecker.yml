@@ -7,10 +7,10 @@ pipeline:
   k8_deploy:
     image: ghcr.io/bh90210/dron8s:latest
     settings:
+      kubeconfig:
+        from_secret: kubeconfig
       yaml: ./streamlinkweb-deployment.yaml
-      kubeconfig: ${kubeconfig}
-    kubeconfig:
-      from_secret: kubeconfig
+
     secrets: [kubeconfig]
 
   ecr_build:
@@ -18,6 +18,7 @@ pipeline:
     environment:
       - ECR_ACCESS_KEY=${aws_access_key}
       - ECR_SECRET_KEY=${aws_secret_key}
-    repo: streamlinkweb
-    registry: ${aws_ecr_registry_url}
+    settings:
+      repo: streamlinkweb
+      registry: ${aws_ecr_registry_url}
     secrets: [aws_access_key, aws_secret_key, aws_ecr_registry_url]
